@@ -6,7 +6,7 @@ public class InverseString {
     }
 
     private static String reverseString(String input) {
-        if (input.equals("")){
+        if (input.isEmpty()){
             return "";
         }
         return reverseString(input.substring(1)) + input.charAt(0);
