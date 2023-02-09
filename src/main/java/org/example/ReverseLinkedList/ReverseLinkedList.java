@@ -5,11 +5,18 @@ package org.example.ReverseLinkedList;
 public class ReverseLinkedList {
 
     static class Node{
+        public int data;
+        public Node right;
+        public Node left;
         private int val;
         private Node next;
 
         public Node(int val) {
             this.val = val;
+        }
+
+        public Node() {
+
         }
 
 
@@ -42,6 +49,25 @@ public class ReverseLinkedList {
 
         printLinkedList(mergeList(n1, n2));
 
+        printLinkedList(insertNode(n1, 1));
+
+    }
+
+    private static Node insertNode(Node head, int data) {
+        if (head == null) {
+            head = new Node();
+            head.data = data;
+            return head;
+        }
+
+        if (head.data < data){
+            head.right = insertNode(head.right, data);
+        }
+        else{
+            head.left = insertNode(head.left, data);
+        }
+
+        return head;
     }
 
     private static Node mergeList(Node n1, Node n2) {
