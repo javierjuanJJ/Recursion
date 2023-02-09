@@ -39,6 +39,28 @@ public class ReverseLinkedList {
 
         Node reversed = reverseList(n1);
         printLinkedList(reversed);
+
+        printLinkedList(mergeList(n1, n2));
+
+    }
+
+    private static Node mergeList(Node n1, Node n2) {
+        if (n1 == null) {
+            return n2;
+        }
+
+        if (n2 == null) {
+            return n1;
+        }
+
+        if (n1.val <= n2.val) {
+            n1.next = mergeList(n1.next, n2);
+            return n1;
+        }
+        else {
+            n2.next = mergeList(n1, n2.next);
+            return n2;
+        }
     }
 
     private static Node reverseList(Node n1) {
