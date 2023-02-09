@@ -1,6 +1,8 @@
 package org.example.ReverseLinkedList;
 
 
+import java.util.HashSet;
+import java.util.Set;
 
 public class ReverseLinkedList {
 
@@ -26,6 +28,10 @@ public class ReverseLinkedList {
 
         public void setNext(Node next) {
             this.next = next;
+        }
+
+        public HashSet<Node> getNeighboards() {
+            return null;
         }
     }
 
@@ -53,6 +59,36 @@ public class ReverseLinkedList {
 
         printLeaves(n1);
 
+        Set<Node> visited = new HashSet<>();
+
+        System.out.println(depthFirstSearch(n1,visited,1));
+
+    }
+
+    private static boolean depthFirstSearch(Node n1, Set<Node> visited, int goal) {
+
+        if (n1 == null) {
+            return false;
+        }
+        if (n1.val == goal) {
+            return true;
+        }
+
+        for (Node neightboard :
+                n1.getNeighboards()) {
+            if (visited.contains(neightboard)){
+                continue;
+            }
+            boolean isFound = depthFirstSearch(neightboard, visited, goal);
+            if (isFound) {
+                return true;
+            }
+
+        }
+
+
+
+        return false;
     }
 
     private static void printLeaves(Node root) {
