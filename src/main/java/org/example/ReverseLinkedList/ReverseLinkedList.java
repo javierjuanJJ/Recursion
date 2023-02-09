@@ -51,6 +51,24 @@ public class ReverseLinkedList {
 
         printLinkedList(insertNode(n1, 1));
 
+        printLeaves(n1);
+
+    }
+
+    private static void printLeaves(Node root) {
+        if (root != null) {
+            if (root.left == null && root.right == null) {
+                System.out.print(root.val + ", ");
+            }
+            else {
+                if (root.right != null) {
+                    printLeaves(root.right);
+                }
+                else {
+                    printLeaves(root.left);
+                }
+            }
+        }
     }
 
     private static Node insertNode(Node head, int data) {
